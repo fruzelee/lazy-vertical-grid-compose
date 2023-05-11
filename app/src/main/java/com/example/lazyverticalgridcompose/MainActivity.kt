@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -25,8 +26,12 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             LazyVerticalGridComposeTheme {
+                val state = rememberLazyGridState(
+                    initialFirstVisibleItemIndex = 99
+                )
                 LazyVerticalGrid(
                     columns = GridCells.Fixed(4),
+                    state = state,
                     content = {
                         items(100) { i ->
                             Box(
